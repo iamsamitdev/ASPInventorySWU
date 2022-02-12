@@ -16,12 +16,11 @@ namespace ASPInventory.Controllers
             return View();
         }
 
-        public String Product()
+        public ActionResult Product()
         {
             ASPInventorySWUDBEnt context = new ASPInventorySWUDBEnt();
             List<product> data = context.products.ToList();
-            // return View(data);
-            return data.ToString();
+            return View(data);
         }
 
         public ActionResult Logout()
