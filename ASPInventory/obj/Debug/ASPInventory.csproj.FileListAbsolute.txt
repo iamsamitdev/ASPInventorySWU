@@ -73,6 +73,8 @@ G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\bin\System.Web.Helper
 G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\bin\System.Web.Mvc.xml
 G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\obj\Debug\ASPInventory.csproj.CoreCompileInputs.cache
-G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\obj\Debug\ASPInventory.csproj.CopyComplete
 G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\obj\Debug\ASPInventory.dll
 G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\obj\Debug\ASPInventory.pdb
+G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\obj\Debug\ASPInventory.csproj.AssemblyReference.cache
+G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\bin\EntityFramework.dll
+G:\TrainingWorkshop\ASPNETMVCSWU\ASPInventory\ASPInventory\bin\EntityFramework.xml

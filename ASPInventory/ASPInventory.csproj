@@ -49,10 +49,16 @@
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,6 +133,16 @@
     <Content Include="Content\images\slide\food2.jpg" />
     <Content Include="Content\images\slide\food3.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\UserDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+      <LastGenOutput>UserDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\backend\js\demo\chart-area-demo.js" />
     <Content Include="Scripts\backend\js\demo\chart-bar-demo.js" />
     <Content Include="Scripts\backend\js\demo\chart-pie-demo.js" />
@@ -1974,6 +1990,13 @@
     <Content Include="Scripts\backend\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Scripts\backend\vendor\jquery\jquery.min.map" />
     <Content Include="Scripts\backend\vendor\jquery\jquery.slim.min.map" />
+    <EntityDeploy Include="Models\UserDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserDataModel.edmx.diagram">
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -2076,9 +2099,36 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackendController.cs" />
     <Compile Include="Controllers\FrontendController.cs" />
+    <Compile Include="Controllers\SessionCheck.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extended\User.cs" />
+    <Compile Include="Models\product.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2087,6 +2137,13 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Views\Frontend\Forgotpassword.cshtml" />
+    <Content Include="Views\Layouts\_BackendLayout.cshtml" />
+    <Content Include="Views\Shared\backend\navbar.cshtml" />
+    <Content Include="Views\Shared\backend\sidebar.cshtml" />
+    <Content Include="Views\Shared\backend\footer.cshtml" />
+    <Content Include="Views\Backend\Dashboard.cshtml" />
+    <Content Include="Views\Backend\Product.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2096,15 +2153,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Backend\" />
-    <Folder Include="Views\Shared\backend\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

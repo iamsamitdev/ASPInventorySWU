@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ASPInventory.Models.User
+
+@{
     ViewBag.Title = "เข้าสู่ระบบ";
     Layout = "~/Views/Layouts/_AuthenLayout.cshtml";
 }
@@ -14,20 +16,33 @@
                         <h1 class="h4 text-gray-900 mb-4">เข้าสู่ระบบ</h1>
                     </div>
 
-                  
-                        <div class="form-group">
+                    @if (ViewBag.Message != null)
+                    {
+                        @Html.Raw(ViewBag.Message)
+                    }
 
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(c => c.EmailID, "อีเมล์", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.EmailID) } })
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group">
-                         
+                            @Html.LabelFor(c => c.Password, "รหัสผ่าน", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.Password) } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox small">
                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                 <label class="custom-control-label" for="customCheck">
-                                    Remember Me
+                                    จำฉันไว้
                                 </label>
                             </div>
                         </div>
@@ -35,18 +50,20 @@
                         <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                         <hr>
                         <a href="#" class="btn btn-google btn-user btn-block">
-                            <i class="fab fa-google fa-fw"></i> Register with Google
+                            <i class="fab fa-google fa-fw"></i> ลงทะเบียนด้วย Google
                         </a>
                         <a href="#" class="btn btn-facebook btn-user btn-block">
-                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            <i class="fab fa-facebook-f fa-fw"></i> ลงทะเบียนด้วย Facebook
                         </a>
+
+                    }
 
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="#">ลืมรหัสผ่าน ?</a>
+                        @Html.ActionLink("ลืมรหัสผ่าน ?", "Forgotpassword", "Frontend", null, new { @class = "small" })
                     </div>
                     <div class="text-center">
-                        
+                        @Html.ActionLink("ยังไม่เป็นสมาชิก ลงทะเบียน", "Register", "Frontend", null, new { @class = "small" })
                     </div>
                 </div>
             </div>
